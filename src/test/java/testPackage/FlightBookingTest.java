@@ -9,10 +9,10 @@ import org.junit.jupiter.api.*;
 
 public class FlightBookingTest extends BaseClass {
 
-    Registration reg;
-    SignOn signon;
-    Flightfinder finder;
-    SelectFlight selectFlight;
+    private Registration reg;
+    private SignOn signon;
+    private Flightfinder finder;
+    private SelectFlight selectFlight;
 
     @BeforeEach
     public void setUp(){
