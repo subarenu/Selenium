@@ -15,7 +15,7 @@ public class FlightBookingTest extends BaseClass {
     private SelectFlight selectFlight;
 
     @BeforeEach
-    public void setUp(){
+    public void setUp() {
         loadProperties();
         webDriverInitialization();
         reg = new Registration();
@@ -23,47 +23,46 @@ public class FlightBookingTest extends BaseClass {
     }
 
 
-
     @AfterEach
-    public void afterEach(){
+    public void afterEach() {
         driver.quit();
     }
 
-    public Flightfinder verifySignIn(){
+    public Flightfinder verifySignIn() {
         getUrl();
         String title = signon.pageTitle();
-        Assertions.assertEquals("Welcome: Mercury Tours",title);
+        Assertions.assertEquals("Welcome: Mercury Tours", title);
         finder = signon.Login();
-        Assertions.assertEquals("Find a Flight: Mercury Tours:",finder.pageTitle());
+        Assertions.assertEquals("Find a Flight: Mercury Tours:", finder.pageTitle());
         return finder;
     }
 
     @Test
-    public void bookFlight(){
+    public void bookFlight() {
         verifySignIn();
         Boolean selected = finder.selectTripType();
         Assertions.assertTrue(selected);
         String valueDisplay = finder.selectPassengers(2).trim();
-        Assertions.assertEquals("3",valueDisplay);
+        Assertions.assertEquals("3", valueDisplay);
         String fromValueDisplay = finder.selectFrom("London");
-        Assertions.assertEquals("London",fromValueDisplay);
+        Assertions.assertEquals("London", fromValueDisplay);
         String fromMonthDisplay = finder.selectFromMonth("April");
-        Assertions.assertEquals("April",fromMonthDisplay);
+        Assertions.assertEquals("April", fromMonthDisplay);
         String fromDateDisplay = finder.selectFromDate("20");
-        Assertions.assertEquals("20",fromDateDisplay);
+        Assertions.assertEquals("20", fromDateDisplay);
         String arrivalDisplay = finder.selectArrival("Paris");
-        Assertions.assertEquals("Paris",arrivalDisplay);
+        Assertions.assertEquals("Paris", arrivalDisplay);
         String arrivalMonthDisplay = finder.selectReturnMonth("May");
-        Assertions.assertEquals("May",arrivalMonthDisplay);
+        Assertions.assertEquals("May", arrivalMonthDisplay);
         String arrivalDateDisplay = finder.selectReturnDate("30");
-        Assertions.assertEquals("30",arrivalDateDisplay);
+        Assertions.assertEquals("30", arrivalDateDisplay);
         String selectClassType = finder.selectClassType("First");
-        Assertions.assertEquals("First",selectClassType);
+        Assertions.assertEquals("First", selectClassType);
         String selectAirlines = finder.selectAirline("Unified Airlines");
-        Assertions.assertEquals("Unified Airlines",selectAirlines);
+        Assertions.assertEquals("Unified Airlines", selectAirlines);
         selectFlight = finder.clickOnContinue();
         String selectFlightPageTitle = selectFlight.pageTitle();
-        Assertions.assertEquals("Select a Flight: Mercury Tours",selectFlightPageTitle);
+        Assertions.assertEquals("Select a Flight: Mercury Tours", selectFlightPageTitle);
     }
 
 }

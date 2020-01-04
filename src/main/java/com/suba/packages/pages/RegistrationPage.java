@@ -16,14 +16,16 @@ public class RegistrationPage extends BaseClass {
     @FindBy(xpath = "//input[@name='register']")
     WebElement submit;
 
-    public RegistrationPage(){
-        PageFactory.initElements(driver,this);
+    public RegistrationPage() {
+        PageFactory.initElements(driver, this);
     }
-    public String pagetitle(){
+
+    public String pagetitle() {
         String title = driver.getTitle();
         return title;
     }
-    public RegistrationSuccessful registered(){
+
+    public RegistrationSuccessful registered() {
         username.sendKeys(prop.getProperty("username"));
         password.sendKeys(prop.getProperty("password"));
         confirmpassword.sendKeys(prop.getProperty("password"));

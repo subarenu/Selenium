@@ -13,12 +13,12 @@ public class Registration extends BaseClass {
         PageFactory.initElements(driver, this);
     }
 
-    public String pagetitle(){
+    public String pagetitle() {
         String title = driver.getTitle();
         return title;
     }
 
-    public RegistrationPage registrationClick(){
+    public RegistrationPage registrationClick() {
         register.click();
         return new RegistrationPage();
     }

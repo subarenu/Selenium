@@ -11,11 +11,11 @@ import org.junit.jupiter.api.*;
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class RegistrationTest extends BaseClass {
 
-     Registration reg;
-     SignOn signon;
+    Registration reg;
+    SignOn signon;
 
     @BeforeEach
-    public void setUp(){
+    public void setUp() {
         loadProperties();
         webDriverInitialization();
         reg = new Registration();
@@ -23,31 +23,31 @@ public class RegistrationTest extends BaseClass {
     }
 
 
-
     @AfterEach
-    public void afterEach(){
+    public void afterEach() {
         driver.quit();
     }
 
     @Test()
     @Order(1)
-    public void verifyRegistration(){
+    public void verifyRegistration() {
         getUrl();
         String title = reg.pagetitle();
-        Assertions.assertEquals("Welcome: Mercury Tours",title);
+        Assertions.assertEquals("Welcome: Mercury Tours", title);
         RegistrationPage regPage = reg.registrationClick();
-        Assertions.assertEquals("Register: Mercury Tours",regPage.pagetitle());
+        Assertions.assertEquals("Register: Mercury Tours", regPage.pagetitle());
         RegistrationSuccessful success = regPage.registered();
-        Assertions.assertEquals("Note: Your user name is "+prop.getProperty("username")+".",success.pageTitle());
+        Assertions.assertEquals("Note: Your user name is " + prop.getProperty("username") + ".", success.pageTitle());
     }
+
     @Test
     @Order(2)
-    public void verifySignIn(){
+    public void verifySignIn() {
         getUrl();
         String title = signon.pageTitle();
-        Assertions.assertEquals("Welcome: Mercury Tours",title);
+        Assertions.assertEquals("Welcome: Mercury Tours", title);
         Flightfinder finder = signon.Login();
-        Assertions.assertEquals("Find a Flight: Mercury Tours:",finder.pageTitle());
+        Assertions.assertEquals("Find a Flight: Mercury Tours:", finder.pageTitle());
 
     }
 

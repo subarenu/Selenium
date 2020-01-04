@@ -13,16 +13,16 @@ public class SignOn extends BaseClass {
     @FindBy(xpath = "//input[@value='Login']")
     WebElement login;
 
-    public SignOn(){
-        PageFactory.initElements(driver,this);
+    public SignOn() {
+        PageFactory.initElements(driver, this);
     }
 
-    public String pageTitle(){
+    public String pageTitle() {
         String title = driver.getTitle();
         return title;
     }
 
-    public Flightfinder Login(){
+    public Flightfinder Login() {
         user.sendKeys(prop.getProperty("username"));
         pass.sendKeys(prop.getProperty("password"));
         login.click();
